@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Promo Calculator</string>
+    <string name="discount_percentage">Persentase Diskon</string>
+    <string name="tax">Pajak</string>
+    <string name="discount">Diskon</string>
+    <string name="diskon_percentage_symbol">% Diskon</string>
+    <string name="tax_10_percent">Pajak 10%</string>
+    <string name="max_promo_caption">Temukan berapa yang perlu Anda belanjakan untuk mendapatkan diskon maksimal</string>
+    <string name="purchase">"Pembelian: "</string>
+    <string name="promo_calculator_caption">Hitung diskon dengan mudah dan ketahui harga akhirnya</string>
+    <string name="price_tv">Harga</string>
+    <string name="price">"Harga: "</string>
+    <string name="saved">"Hemat: "</string>
+    <string name="promo_percentage_caption">Berapa persen diskon yang Anda dapatkan?</string>
+    <string name="normal_price">Harga Normal</string>
+    <string name="promotion_price">Harga Promo</string>
+    <string name="tax_calculator_caption">Hitung harga akhir setelah pajak dengan cepat dan akurat</string>
+    <string name="tax_with_colon">"Pajak: "</string>
+    <string name="total_with_colon">"Total: "</string>
+    <string name="add">Tambah</string>
+    <string name="delete">Hapus</string>
+    <string name="discount_with_colon">Diskon:</string>
+    <string name="max_promo">Max Promo</string>
+</resources>

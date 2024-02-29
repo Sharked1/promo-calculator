@@ -1,3 +1,24 @@
 <resources>
-    <string name="app_name">Promo Calculator</string>
+    <string name="app_name" translatable="false">Promo Calculator</string>
+    <string name="discount_percentage">Discount Percentage</string>
+    <string name="tax">Tax</string>
+    <string name="discount">Discount</string>
+    <string name="diskon_percentage_symbol">Disc %</string>
+    <string name="tax_10_percent">Tax 10%</string>
+    <string name="max_promo_caption">Find out how much you need to spend to get the maximum discount</string>
+    <string name="purchase">Purchase:</string>
+    <string name="promo_calculator_caption">Easily calculate discounts and see what the final price will be</string>
+    <string name="price_tv">Price</string>
+    <string name="price">Price:</string>
+    <string name="saved">Saves:</string>
+    <string name="promo_percentage_caption">What percentage discount do you get?</string>
+    <string name="normal_price">Normal Price</string>
+    <string name="promotion_price">Promotion Price</string>
+    <string name="tax_calculator_caption">Calculate the final price after tax quickly and accurately</string>
+    <string name="tax_with_colon">Tax:</string>
+    <string name="total_with_colon">"Total: "</string>
+    <string name="add">Add</string>
+    <string name="delete">Delete</string>
+    <string name="discount_with_colon">Discount:</string>
+    <string name="max_promo">Max Promo</string>
 </resources>

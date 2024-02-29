@@ -1,71 +1,78 @@
 package com.dicoding.promocalculator.utils
 
-import com.dicoding.promocalculator.ui.screen.percentageInput
 import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
+import java.text.NumberFormat
 
-fun validateNumber(value: String, inputType: String): String {
+
+val numberFormat: NumberFormat = NumberFormat.getInstance()
+val decimalSeparator = DecimalFormatSymbols.getInstance().decimalSeparator
+
+fun validatePercentage(value: String): String {
     var newValue = value
+    newValue = newValue.removeLastNonDigitExceptPeriod()
     val pointCount = newValue.count {
         it == '.'
     }
     if (pointCount > 1) {
-        newValue = newValue.dropLast(1)
-    }
-    if (newValue.endsWith(',') || newValue.endsWith(' ') || newValue.endsWith('-')){
-        newValue = newValue.dropLast(1)
+        return newValue.dropLast(1) // remove last point mark if there is 2 point mark in value
     }
     if (newValue.isEmpty()) {
         return ""
     }
     if (newValue == ".") {
-        return "."
+        return ""
     }
-    if (inputType == percentageInput) {
-        if (newValue.toDouble() > 100) {
-            newValue = "100"
-        }
+    if (newValue.toDouble() > 100) {
+        return "100"
     }
     return newValue
 }
-fun isValidInput(vararg values: String): Boolean {
-    for (value in values){
-        if (value.isEmpty()) {
-            return false
-        }
-        if (value == ".") {
-            return false
+
+fun String.removeLastNonDigit(): String {
+    return if (lastOrNull()?.isDigit() != false) {
+        this
+    } else {
+        dropLast(1)
+    }
+}
+
+fun String.removeLastNonDigitExceptPeriod() : String {
+    return if (lastOrNull()?.isDigit() != false || last() == '.') {
+        this
+    } else {
+        dropLast(1)
+    }
+}
+
+fun formatNumber(input: String): String {
+    val sanitizedInput = input.removeLastNonDigit()
+
+    return try {
+        val value = numberFormat.parse(sanitizedInput)
+        numberFormat.format(value)
+    } catch (e: Exception) {
+        sanitizedInput
+    }
+}
+
+fun changeDecimalSeparatorToComma(input: Float): String {
+    return if (decimalSeparator == ',') {
+        input.toString().replace('.', ',')
+    } else {
+        input.toString()
+    }
+}
+
+fun isZeroValue(vararg values: Float) : Boolean {
+    for (value in values) {
+        if (value == 0f) {
+            return true
         }
     }
-    return true
-}
-fun calculateDiscount(percentage: String, price: String): String {
-    val value = (percentage.toDouble() * price.toDouble() / 100L).toString()
-    return formatDecimal(value)
-}
-fun calculateFinalPrice(price: String, discount: String): String {
-    val value = (price.toDouble() - discount.toDouble()).toString()
-    return formatDecimal(value)
+    return false
 }
 
-fun calculatePriceNeeded(percentage: String, maxPromoValue: String) : String {
-    val value = (maxPromoValue.toDouble() * 100 / percentage.toDouble()).toString()
-    return formatDecimal(value)
-}
-
-fun calculateDiscountValue(realPrice: String, promoPrice: String) : String {
-    val value = ((-100 * promoPrice.toDouble()) / realPrice.toDouble() + 100).toString()
-    return formatDecimal(value)
-}
-
-fun calculateTax(price: String) : String {
-    val value = (price.toDouble() / 10).toString()
-    return formatDecimal(value)
-}
-
-fun calculatePriceAfterTax(price: String, tax: String): String {
-    val value = (price.toDouble() + tax.toDouble()).toString()
-    return formatDecimal(value)
-}
-fun formatDecimal(value: String) : String {
-    return DecimalFormat("#.##").format(value.toDouble())
+fun formatDecimal(value: Float): Float {
+    return DecimalFormat("#.##").format(value).toFloat()
 }
