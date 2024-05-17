@@ -19,14 +19,17 @@ import com.dicoding.promocalculator.utils.validatePercentage
 @Composable
 fun PercentageTextField(
     state: String,
-    onValueChange: (String) -> Unit
+    label: String = "%",
+    supportingText: @Composable (() -> Unit )? = null,
+    onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     OutlinedTextField(
         value = state,
         onValueChange = {
             onValueChange(validatePercentage(it))
         },
-        label = { Text(text = "%") },
+        label = { Text(label) },
         keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Decimal,
             imeAction = ImeAction.Done
@@ -42,8 +45,9 @@ fun PercentageTextField(
                 )
             }
         },
+        supportingText = supportingText,
         shape = RoundedCornerShape(16.dp),
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth(0.3F)
     )
 }

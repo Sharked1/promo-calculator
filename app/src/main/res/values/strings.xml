@@ -21,4 +21,6 @@
     <string name="delete">Delete</string>
     <string name="discount_with_colon">Discount:</string>
     <string name="max_promo">Max Promo</string>
+    <string name="service_charge_percentage">Service Charge Percentage</string>
+    <string name="service_charge_with_colon">Service Charge:</string>
 </resources>

@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -133,9 +134,12 @@ fun MyTopBar(
     title: String,
     navController: NavHostController
 ) {
-    TopAppBar(
-        title = { Text(text = title) },
-    )
+    Crossfade(targetState = title, label = "") {
+        TopAppBar(
+            title = { Text(text = it) },
+        )
+    }
+
 }
 
 @Composable

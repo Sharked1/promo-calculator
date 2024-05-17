@@ -22,4 +22,6 @@
     <string name="delete">Hapus</string>
     <string name="discount_with_colon">Diskon:</string>
     <string name="max_promo">Max Promo</string>
+    <string name="service_charge_percentage">Persentase biaya service</string>
+    <string name="service_charge_with_colon">Biaya service:</string>
 </resources>

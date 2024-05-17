@@ -3,6 +3,7 @@ package com.dicoding.promocalculator.utils
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 import java.text.NumberFormat
+import java.util.Locale
 
 
 val numberFormat: NumberFormat = NumberFormat.getInstance()
@@ -73,6 +74,12 @@ fun isZeroValue(vararg values: Float) : Boolean {
     return false
 }
 
-fun formatDecimal(value: Float): Float {
-    return DecimalFormat("#.##").format(value).toFloat()
+object DecimalUtils {
+    private val decimalFormat: DecimalFormat by lazy {
+        DecimalFormat("#.##", DecimalFormatSymbols(Locale.US))
+    }
+
+    fun formatDecimal(value: Float): Float {
+        return decimalFormat.format(value).toFloat()
+    }
 }

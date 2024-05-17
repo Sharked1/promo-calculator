@@ -76,7 +76,7 @@ fun MaxPromoScreen(
             state = percentageTextFieldState,
             onValueChange = {
                 viewModel.onPercentageValueChange(it)
-            }
+            },
         )
 
         Spacer(modifier = Modifier.height(12.dp))
